@@ -1,1 +1,1 @@
-export { default } from './GroupDashboardPage';
+export { default as GroupDashboardPage } from './GroupDashboardPage';

@@ -1,5 +1,3 @@
 export default function GroupDashboardPage() {
-  return(
-    <div>Hello World</div>
-  )
+  return <div>group dashboard</div>;
 }

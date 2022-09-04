@@ -2,11 +2,12 @@
 import { useEffect } from 'react';
 // redux
 import { useDispatch, useSelector } from 'react-redux';
-import { loadUserByToken } from './redux/slices/auth/authSlice';
+// import { loadUserByToken } from './redux/slices/auth/authSlice';
 // @mui
-import { Stack, CssBaseline } from '@mui/material';
+import { Stack, CssBaseline, GlobalStyles } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
-import { theme } from './stykes/theme';
+import theme from './styles/theme';
+import globalStyles from './styles/global';
 // react-router-dom
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // components
@@ -27,15 +28,17 @@ export default function App() {
 
   useEffect(() => {
     let token = localStorage.getItem('token');
-    dispatch(loadUserByToken(token));
+    // dispatch(loadUserByToken(token));
   }, [dispatch]);
 
-  const toasts = useSelector((state) => state.errors.toastErrors);
+  // const toasts = useSelector((state) => state.errors.toastErrors);
+  const toasts = { ids: [] };
 
   return (
     <ThemeProvider theme={theme}>
       {/* MUI Baseline */}
       <CssBaseline />
+      <GlobalStyles styles={globalStyles} />
 
       {/* Toasts */}
       {toasts.ids.length !== 0 && (

@@ -1,1 +1,1 @@
-export { default } from './ReportPage';
+export { default as ReportPage } from './ReportPage';
