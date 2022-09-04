@@ -15,7 +15,17 @@ const theme = createTheme({
     // }
   },
   typography: {
-    fontFamily: 'Lexend Deca'
+    fontFamily: 'Open Sans'
+  },
+  components: {
+    MuiAvatarGroup: {
+      styleOverrides: {
+        avatar: {
+          width: 30,
+          height: 30
+        }
+      }
+    }
   }
 });
 

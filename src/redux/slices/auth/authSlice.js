@@ -6,8 +6,7 @@ import authService from '../../../services/authService';
 
 const initialState = {
   loading: 'init',
-  user: {},
-  notVerifiedEmail: '',
+  user: {}
 };
 
 const loadUserByToken = createAsyncThunk(
@@ -94,7 +93,7 @@ const logout = createAsyncThunk('auth/logout', async (data, { dispatch }) => {
 
 const resendToken = createAsyncThunk(
   'auth/resendToken',
-  async ({setTimer, email }, { dispatch }) => {
+  async ({ setTimer, email }, { dispatch }) => {
     try {
       const data = await authService.resendToken(email);
       dispatch(addToast({ type: 'success', message: data.message }));
@@ -114,7 +113,7 @@ const resendToken = createAsyncThunk(
 
 const forgotPassword = createAsyncThunk(
   'auth/forgotPassword',
-  async ({setTimer, setState, email }, { dispatch }) => {
+  async ({ setTimer, setState, email }, { dispatch }) => {
     try {
       const data = await authService.forgotPassword(email);
       dispatch(addToast({ type: 'success', message: data.message }));
@@ -141,7 +140,7 @@ const forgotPassword = createAsyncThunk(
 
 const verifyResetToken = createAsyncThunk(
   'auth/verifyResetToken',
-  async ({setState, token }, { dispatch }) => {
+  async ({ setState, token }, { dispatch }) => {
     try {
       const data = await authService.verifyResetToken(token);
       dispatch(addToast({ type: 'success', message: data.message }));
@@ -197,12 +196,12 @@ const verifyToken = createAsyncThunk(
 
 const resetPassword = createAsyncThunk(
   'auth/resetPassword',
-  async ({setState, token, password, password2 }, { dispatch }) => {
+  async ({ setState, token, password, password2 }, { dispatch }) => {
     try {
       const data = await authService.resetPassword({
         token,
         password,
-        password2,
+        password2
       });
       dispatch(addToast({ type: 'success', message: data.message }));
       setState('REST_DONE');
@@ -231,18 +230,18 @@ export const authSlice = createSlice({
   reducers: {
     setNotVerifiedEmail: (state, action) => {
       state.notVerifiedEmail = action.payload;
-    },
+    }
   },
   extraReducers: (builder) => {
-     builder.addCase(resendToken.pending, (state, action) => {
-       state.loading = 'loading';
-     });
-     builder.addCase(resendToken.fulfilled, (state, action) => {
-       state.loading = 'idle';
-     });
-     builder.addCase(resendToken.rejected, (state, action) => {
-       state.loading = 'idle';
-     });
+    builder.addCase(resendToken.pending, (state, action) => {
+      state.loading = 'loading';
+    });
+    builder.addCase(resendToken.fulfilled, (state, action) => {
+      state.loading = 'idle';
+    });
+    builder.addCase(resendToken.rejected, (state, action) => {
+      state.loading = 'idle';
+    });
     builder.addCase(verifyToken.pending, (state, action) => {
       state.loading = 'loading';
     });
@@ -319,7 +318,7 @@ export const authSlice = createSlice({
       state.loading = 'idle';
       state.user = {};
     });
-  },
+  }
 });
 
 export const { setNotVerifiedEmail } = authSlice.actions;
@@ -333,7 +332,7 @@ export {
   verifyResetToken,
   resetPassword,
   verifyToken,
-  resendToken,
+  resendToken
 };
 
 export default authSlice.reducer;

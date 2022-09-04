@@ -12,9 +12,10 @@ import {
   ListItem,
   ListItemButton,
   ListItemIcon,
-  ListItemText
+  ListItemText,
+  useMediaQuery
 } from '@mui/material';
-import { Box } from '@mui/system';
+import { Box, Container } from '@mui/system';
 // react-router-dom
 import { Outlet } from 'react-router-dom';
 // icons
@@ -26,6 +27,8 @@ export default function DashboardLayout(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = useState(false);
 
+  const isPhone = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -34,7 +37,19 @@ export default function DashboardLayout(props) {
     <div>
       <Toolbar />
       <Divider />
-      <Typography sx={{ fontWeight: 'bold', mx: 2, mt: 5 }}>Groups</Typography>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          mx: 2,
+          mt: 2
+        }}>
+        <Typography sx={{ fontWeight: 'bold' }}>Groups</Typography>
+        <IconButton>
+          <Icon icon='akar-icons:circle-plus' />
+        </IconButton>
+      </Box>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem key={text} disablePadding>
@@ -75,37 +90,39 @@ export default function DashboardLayout(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <>
+    <Box sx={{ display: 'flex' }}>
       <AppBar
         position='fixed'
         sx={{
           width: { sm: `calc(100% - ${drawerWidth}px)` },
           ml: { sm: `${drawerWidth}px` }
         }}>
-        <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
-          <IconButton
-            color='inherit'
-            aria-label='open drawer'
-            edge='start'
-            onClick={handleDrawerToggle}
-            sx={{ mr: 2, visibility: { sm: 'hidden' } }}>
-            <Icon icon='fa6-solid:bars-staggered' />
-          </IconButton>
-          <Typography variant='h6' noWrap component='div' sx={{}}>
-            Logo
-          </Typography>
-          <div>
+        <Container maxWidth={!isPhone ? 'xl' : false}>
+          <Toolbar sx={{ display: 'flex', justifyContent: 'space-between' }}>
             <IconButton
-              size='large'
-              aria-label='account of current user'
-              aria-controls='menu-appbar'
-              aria-haspopup='true'
-              onClick={() => {}}
-              color='inherit'>
-              <Icon icon='bxs:user-circle' />
+              color='inherit'
+              aria-label='open drawer'
+              edge='start'
+              onClick={handleDrawerToggle}
+              sx={{ mr: 2, visibility: { sm: 'hidden' } }}>
+              <Icon icon='fa6-solid:bars-staggered' />
             </IconButton>
-          </div>
-        </Toolbar>
+            <Typography variant='h6' noWrap component='div' sx={{}}>
+              Logo
+            </Typography>
+            <div>
+              <IconButton
+                size='large'
+                aria-label='account of current user'
+                aria-controls='menu-appbar'
+                aria-haspopup='true'
+                onClick={() => {}}
+                color='inherit'>
+                <Icon icon='bxs:user-circle' />
+              </IconButton>
+            </div>
+          </Toolbar>
+        </Container>
       </AppBar>
       <Box
         component='nav'
@@ -142,7 +159,18 @@ export default function DashboardLayout(props) {
           {drawer}
         </Drawer>
       </Box>
-      <Outlet />
-    </>
+      <Box
+        component='main'
+        sx={{
+          flexGrow: 1,
+          p: 3,
+          width: { sm: `calc(100% - ${drawerWidth}px)` }
+        }}>
+        <Toolbar />
+        <Container maxWidth={!isPhone ? 'xl' : false}>
+          <Outlet />
+        </Container>
+      </Box>
+    </Box>
   );
 }
