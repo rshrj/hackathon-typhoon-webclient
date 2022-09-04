@@ -1,5 +1,5 @@
 // react
-import { useState } from 'react';
+import { useState } from "react";
 // @mui
 import {
   Box,
@@ -8,16 +8,13 @@ import {
   DialogActions,
   DialogContent,
   DialogContentText,
-  DialogTitle,
-  FormControl,
-  InputLabel,
   MenuItem,
   Select,
   TextField,
-  Typography
-} from '@mui/material';
+  Typography,
+} from "@mui/material";
 // icons
-import { Icon } from '@iconify-icon/react';
+import { Icon } from "@iconify-icon/react";
 
 export default function TransactionEditView({ edit = false, current }) {
   const [open, setOpen] = useState(false);
@@ -30,7 +27,7 @@ export default function TransactionEditView({ edit = false, current }) {
     setOpen(false);
   };
 
-  const [age, setAge] = useState('EXPENSE');
+  const [age, setAge] = useState("EXPENSE");
 
   const handleChange = (event) => {
     setAge(event.target.value);
@@ -39,9 +36,10 @@ export default function TransactionEditView({ edit = false, current }) {
   return (
     <div>
       <Button
-        variant='outlined'
+        variant="outlined"
         onClick={handleClickOpen}
-        startIcon={<Icon icon='akar-icons:circle-plus' />}>
+        startIcon={<Icon icon="akar-icons:circle-plus" />}
+      >
         Add Transaction
       </Button>
       <Dialog open={open} onClose={handleClose}>
@@ -50,33 +48,35 @@ export default function TransactionEditView({ edit = false, current }) {
             p: 2,
             px: 3,
             width: 300,
-            display: 'flex',
-            alignItems: 'center'
-          }}>
-          <Typography variant='h6' sx={{ mr: 2 }}>
+            display: "flex",
+            alignItems: "center",
+          }}
+        >
+          <Typography variant="h6" sx={{ mr: 2 }}>
             New
           </Typography>
           <Select
-            labelId='demo-simple-select-label'
-            id='demo-simple-select'
+            labelId="demo-simple-select-label"
+            id="demo-simple-select"
             value={age}
-            label='Age'
+            label="Age"
             onChange={handleChange}
-            variant='outlined'
-            defaultValue='EXPENSE'
-            autoWidth>
-            <MenuItem value={'EXPENSE'}>
-              <Typography variant='h6' sx={{ mr: 2 }}>
+            variant="outlined"
+            defaultValue="EXPENSE"
+            autoWidth
+          >
+            <MenuItem value={"EXPENSE"}>
+              <Typography variant="h6" sx={{ mr: 2 }}>
                 Expense
               </Typography>
             </MenuItem>
-            <MenuItem value={'INCOME'}>
-              <Typography variant='h6' sx={{ mr: 2 }}>
+            <MenuItem value={"INCOME"}>
+              <Typography variant="h6" sx={{ mr: 2 }}>
                 Income
               </Typography>
             </MenuItem>
-            <MenuItem value={'TRANSFER'}>
-              <Typography variant='h6' sx={{ mr: 2 }}>
+            <MenuItem value={"TRANSFER"}>
+              <Typography variant="h6" sx={{ mr: 2 }}>
                 Transfer
               </Typography>
             </MenuItem>
@@ -90,12 +90,12 @@ export default function TransactionEditView({ edit = false, current }) {
           </DialogContentText>
           <TextField
             autoFocus
-            margin='dense'
-            id='name'
-            label='Email Address'
-            type='email'
+            margin="dense"
+            id="name"
+            label="Email Address"
+            type="email"
             fullWidth
-            variant='standard'
+            variant="standard"
           />
         </DialogContent>
         <DialogActions>

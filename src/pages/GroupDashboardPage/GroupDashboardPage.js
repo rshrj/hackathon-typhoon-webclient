@@ -1,12 +1,10 @@
 // @mui
-import { Button, Grid } from '@mui/material';
-// icons
-import { Icon } from '@iconify-icon/react';
+import { Grid } from "@mui/material";
 // sections
-import OweOwedPanel from '../../sections/OweOwedPanel';
-import GroupTable from '../../sections/GroupTable';
-import CategoryWiseDistribution from '../../sections/CategoryWiseDistribution';
-import { TransactionEditView } from '../../sections/TransactionEditView';
+import OweOwedPanel from "../../sections/OweOwedPanel";
+import GroupTable from "../../sections/GroupTable";
+import CategoryWiseDistribution from "../../sections/CategoryWiseDistribution";
+import { TransactionEditView } from "../../sections/TransactionEditView";
 
 export default function GroupDashboardPage() {
   return (
@@ -16,10 +14,11 @@ export default function GroupDashboardPage() {
         xs={12}
         sm={8}
         sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <OweOwedPanel />
       </Grid>
       <Grid
@@ -27,11 +26,12 @@ export default function GroupDashboardPage() {
         xs={12}
         sm={4}
         sx={{
-          textAlign: 'right',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+          textAlign: "right",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <TransactionEditView />
       </Grid>
       <Grid
@@ -39,11 +39,12 @@ export default function GroupDashboardPage() {
         xs={12}
         sm={8}
         sx={{
-          textAlign: 'right',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+          textAlign: "right",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <GroupTable />
       </Grid>
       <Grid
@@ -51,11 +52,12 @@ export default function GroupDashboardPage() {
         xs={12}
         sm={4}
         sx={{
-          textAlign: 'right',
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
+          textAlign: "right",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <CategoryWiseDistribution />
       </Grid>
     </Grid>
