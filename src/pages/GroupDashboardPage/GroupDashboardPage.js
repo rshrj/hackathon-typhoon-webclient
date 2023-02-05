@@ -16,7 +16,6 @@ export default function GroupDashboardPage() {
         sx={{
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
         }}
       >
         <OweOwedPanel />
@@ -29,7 +28,6 @@ export default function GroupDashboardPage() {
           textAlign: "right",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
         }}
       >
         <TransactionEditView />
@@ -39,10 +37,8 @@ export default function GroupDashboardPage() {
         xs={12}
         sm={8}
         sx={{
-          textAlign: "right",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
         }}
       >
         <GroupTable />
@@ -52,10 +48,8 @@ export default function GroupDashboardPage() {
         xs={12}
         sm={4}
         sx={{
-          textAlign: "right",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center",
         }}
       >
         <CategoryWiseDistribution />
